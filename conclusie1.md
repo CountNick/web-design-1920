@@ -16,4 +16,6 @@ Het gesprek zelf ging bestwel goed en was prettig. Op een gegeven moment hebben 
 
 Vragen voor volgende keer:
 
-* Wat zijn behalve beeldhouw
+- Kijk je weleens films?
+- Wat zijn behalve beeldhouwen je hobbies?
+- Van watvoor kunst/kunstenaars hou je?
