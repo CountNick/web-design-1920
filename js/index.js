@@ -1,3 +1,5 @@
+// Credits go to this example: https://bl.ocks.org/mmazanec22/d3cc26bc753f960cdb05f5075d5eae2f
+
 //https://stackoverflow.com/questions/9419263/playing-audio-with-javascript
 
 const audio = new Audio()
