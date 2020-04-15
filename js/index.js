@@ -2,12 +2,6 @@
 
 //https://stackoverflow.com/questions/9419263/playing-audio-with-javascript
 
-const audio = new Audio()
-
-const playList = new Array('./audio/all-samples/banjo/banjo_E3_very-long_forte_normal.mp3', './audio/all-samples/banjo/banjo_F3_very-long_forte_normal.mp3', './audio/all-samples/banjo/banjo_Fs3_very-long_piano_normal.mp3', './audio/all-samples/banjo/banjo_G3_very-long_piano_normal.mp3', './audio/all-samples/banjo/banjo_Gs4_very-long_forte_normal.mp3', './audio/all-samples/banjo/banjo_Gs4_very-long_piano_normal.mp3', './audio/all-samples/banjo/banjo_Gs5_very-long_piano_normal.mp3', './audio/all-samples/banjo/banjo_E5_very-long_piano_normal.mp3', './audio/all-samples/banjo/banjo_E6_very-long_forte_normal.mp3')
-
-
-
 const data = [
 
     {
@@ -84,7 +78,6 @@ const data = [
 
   svg
     .append("text")
-    .text("B = billion")
     .attr("x", width + margin.right + margin.left)
     .attr("y", 40)
 
@@ -113,7 +106,9 @@ const data = [
     .attr("class", "data")
     .attr("transform", `translate(${margin.left}, 0)`)
 
-  const barColors = ["#ff0000", "#fffb00", "#002fff", "#ff7b00", "#00ff04", "#9000ff", "#ff00bb", "#fffffff"]
+  const barColors = ["#ff0000", "#fffb00", "#002fff", "#ff7b00", "#00ff04", "#9000ff", "#ff00bb", "#87582f", "#000000"]
+
+  svg.on('keydown', () => handleArrowKey())
 
   const g = barGroups
     .selectAll("g")
@@ -182,7 +177,7 @@ const bars = d3.selectAll('.bar').nodes()
 let highlightedBarIndex = null
 
 
-svg.on('keydown', () => handleArrowKey())
+
 
 function handleArrowKey(){
     const pushed = d3.event.keyCode
@@ -198,27 +193,30 @@ function handleArrowKey(){
     } else if (pushed === 39) {
         highlightedBarIndex += 1;
     }
-    console.log('higleeee: ', highlightedBarIndex)
+    
+    const numBars = bars.length
+
+    highlightedBarIndex = highlightedBarIndex < 0 ? numBars + highlightedBarIndex : highlightedBarIndex % numBars;
+    bars[highlightedBarIndex].focus();
 }
 
 const context = new AudioContext();
 
 function handleBarFocus(data, index){
+    handleArrowKey()
     highlightedBarIndex = index
     const highlightedBar = d3.select(bars[index]);
     const volumeScale = d3.scaleLinear().domain([100, 1500]).range([2, 0.3]);
-    console.log('hiero', highlightedBar)
+    // console.log('hiero', highlightedBar)
 
-    // d3.selectAll(bars)
-    // .classed('highlighted', false)
-    // .attr('tabindex', '-1');
+    d3.selectAll(bars)
+    .classed('highlighted', false)
+    .attr('tabindex', '-1');
 
-    // highlightedBar
-    // .classed('highlighted', true)
-    // .attr('tabindex', '0');
+    highlightedBar
+    .classed('highlighted', true)
+    .attr('tabindex', '0');
 
-    // const self = this
-    // console.log('self: ', self)
 
     highlightedBar.attr('d', function (d) {
         // Audio functionality from: http://bl.ocks.org/aholachek/6e18a82c0f0ada144b854f788c07d7a4
