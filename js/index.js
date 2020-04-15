@@ -180,16 +180,23 @@ const bars = d3.selectAll('.bar').nodes()
 let highlightedBarIndex = null
 
 
-console.log('bars: ', bars)
+svg.on('keydown', () => handleArrowKey())
 
 function handleArrowKey(){
     const pushed = d3.event.keyCode
     if(pushed !== 37 && pushed !== 39) return
-    else console.log(pushed)
+    // else console.log(pushed)
 
-    if(pushed === null){
+    if(highlightedBarIndex === null){
         console.log(pushed)
+        highlightedBarIndex = 0
     }
+    else if (pushed === 37) {
+        highlightedBarIndex -= 1;
+    } else if (pushed === 39) {
+        highlightedBarIndex += 1;
+    }
+    console.log('higleeee: ', highlightedBarIndex)
 }
 
 const context = new AudioContext();
