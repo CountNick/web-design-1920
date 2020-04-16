@@ -2,6 +2,10 @@
 
 //https://stackoverflow.com/questions/9419263/playing-audio-with-javascript
 
+const available_voices = window.speechSynthesis
+
+console.log(available_voices)
+
 const data = [
 
     {
@@ -15,28 +19,28 @@ const data = [
     },
 
     {
-        name: "Pineapples",
-        value: 30,
+        name: "Mango's",
+        value: 40,
     },
 
     {
-        name: "Mango's",
-        value: 40,
+        name: "Pineapples",
+        value: 30,
     },
 
     {
         name: "Apples",
         value: 50,
     },
-
+    {
+        name: "Icecream",
+        value: 70,
+      },
     {
         name: "Apricots",
-        value: 60,
+        value: 50,
     },
-    {
-      name: "Icecream",
-      value: 70,
-    },
+
     {
       name: "Strawberries",
       value: 80,
@@ -181,6 +185,7 @@ let highlightedBarIndex = null
 
 function handleArrowKey(){
     const pushed = d3.event.keyCode
+    console.log(pushed)
     if(pushed !== 37 && pushed !== 39) return
     // else console.log(pushed)
 
@@ -203,6 +208,10 @@ function handleArrowKey(){
 const context = new AudioContext();
 
 function handleBarFocus(data, index){
+    
+    const utterance = new SpeechSynthesisUtterance(`Er zijn ${data.value} ${data.name}`);
+    speechSynthesis.speak(utterance);
+
     handleArrowKey()
     highlightedBarIndex = index
     const highlightedBar = d3.select(bars[index]);
