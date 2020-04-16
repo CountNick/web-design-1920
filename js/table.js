@@ -1,24 +1,32 @@
-function tableCreate() {
-    var body = document.getElementsByTagName('body')[0];
-    var tbl = document.createElement('table');
-    tbl.style.width = '100%';
-    tbl.setAttribute('border', '1');
-    var tbdy = document.createElement('tbody');
-    for (var i = 0; i < 3; i++) {
-      var tr = document.createElement('tr');
-      for (var j = 0; j < 2; j++) {
-        if (i == 2 && j == 1) {
-          break
-        } else {
-          var td = document.createElement('td');
-          td.appendChild(document.createTextNode('\u0020'))
-          i == 1 && j == 1 ? td.setAttribute('rowSpan', '2') : null;
-          tr.appendChild(td)
+d3.csv('./data/Elektriciteit__productie_en_inzet_16042020_113840.csv')
+    .then(data => structureData(data))
+
+
+function structureData(data){
+    console.log('Structure Data functin: ', data)
+
+    const cleanedData = data.map(object => {
+        return {
+            name: object.Energiedragers,
+            jaar: object.Perioden,
+            value: +object['Bruto productie elektriciteit en warmte/Elektriciteit/Elektriciteit (%) (%)']
         }
-      }
-      tbdy.appendChild(tr);
-    }
-    tbl.appendChild(tbdy);
-    body.appendChild(tbl)
-  }
-  tableCreate();
+    })
+
+    cleanYear(cleanedData)
+
+    console.log('clean: ', cleanedData)
+
+    const lastYear = cleanedData.filter(object => object.jaar === 2019)
+
+
+
+    // nest(lastYear)
+}
+
+function cleanYear(data){
+    data.map(object => {
+        if(object.jaar == "2018**") object.jaar = 2018
+        if(object.jaar == "2019*") object.jaar = 2019
+    })
+}

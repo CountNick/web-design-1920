@@ -2,54 +2,41 @@
 
 //https://stackoverflow.com/questions/9419263/playing-audio-with-javascript
 
-const available_voices = window.speechSynthesis
 
-console.log(available_voices)
+
 
 const data = [
 
     {
-      name: "Avocado",
-      value: 10,
-    },
-
-    {
-      name: "Papaya",
-      value: 20,
-    },
-
-    {
-        name: "Mango's",
-        value: 40,
-    },
-
-    {
-        name: "Pineapples",
-        value: 30,
-    },
-
-    {
-        name: "Apples",
-        value: 50,
+      name: "Fossiele brandstoffen",
+      value: 76.3,
+      soorten: [
+          {
+              Aardgas: 58.7
+          },
+          {
+              Steenkool: 14.4
+            },
+            {
+              Stookolie: 0.1
+            },
+            {
+              'Overige fossiele brandstoffen': 3.2
+            }
+      ]
     },
     {
-        name: "Icecream",
-        value: 70,
-      },
-    {
-        name: "Apricots",
-        value: 50,
-    },
-
-    {
-      name: "Strawberries",
-      value: 80,
+        name: "Totaal hernieuwbare energie",
+        value: 18.5,
     },
     {
-        name: "Bananas",
-        value: 100,
+        name: "Kernenergie",
+        value: 3.2,
+    },
+    {
+        name: "Overige energiedragers",
+        value: 2,
     }
-    
 
   ]
 
@@ -100,8 +87,8 @@ const data = [
   const yScale = d3
     .scaleLinear()
     .domain([0, d3.max(yValues)])
-    .nice()
     .range([height, 0])
+    .nice()
 
   const barGroups = svg
     .append("g")
@@ -209,10 +196,12 @@ const context = new AudioContext();
 
 function handleBarFocus(data, index){
     
+    console.log('klik: ', data)
     const utterance = new SpeechSynthesisUtterance(`Er zijn ${data.value} ${data.name}`);
     speechSynthesis.speak(utterance);
 
-    handleArrowKey()
+    utterance.onend = () => listenToSpeech(data)
+    // handleArrowKey()
     highlightedBarIndex = index
     const highlightedBar = d3.select(bars[index]);
     const volumeScale = d3.scaleLinear().domain([100, 1500]).range([2, 0.3]);
@@ -244,5 +233,27 @@ function handleBarFocus(data, index){
         // this rapidly ramps sound down
         gainNode.gain.setTargetAtTime(0, context.currentTime, 0.3);
     });
+
+}
+
+function listenToSpeech(data){
+
+    const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition || window.mozSpeechRecognition || window.msSpeechRecognition)()
+    recognition.lang = 'nl-nl';
+    recognition.interimResults = false;
+    recognition.maxAlternatives = 5;
+    recognition.start();
+
+recognition.onresult = function(event) {
+    console.log('You said: ', event.results[0][0].transcript);
+
+    if(event.results[0][0].transcript == 'meer info'){
+        const utterance = new SpeechSynthesisUtterance(`Hiero`);
+        const utterance2 = new SpeechSynthesisUtterance(data.soorten.map(d => d))
+        speechSynthesis.speak(utterance);
+        utterance.onend = () => speechSynthesis.speak(utterance2)
+    }
+
+};
 
 }
