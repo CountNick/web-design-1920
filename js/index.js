@@ -249,7 +249,7 @@ recognition.onresult = function(event) {
 
     if(event.results[0][0].transcript == 'meer info'){
         const utterance = new SpeechSynthesisUtterance(`Hiero`);
-        const utterance2 = new SpeechSynthesisUtterance(data.soorten.map(d => d))
+        const utterance2 = new SpeechSynthesisUtterance(data.soorten.map(soort => `${Object.entries(soort)}%`))
         speechSynthesis.speak(utterance);
         utterance.onend = () => speechSynthesis.speak(utterance2)
     }
