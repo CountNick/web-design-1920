@@ -1,0 +1,39 @@
+[
+
+    {
+        "Jaar": "2015",
+        "Waterkracht": 98,
+        "Biomassa": 5028,
+        "Windenergie": 6917,
+        "Zonnestroom": 1109
+    },
+    {
+        "Jaar": "2016",
+        "Waterkracht": 98,
+        "Biomassa": 5028,
+        "Windenergie": 6917,
+        "Zonnestroom": 1109
+    },
+    {
+        "Jaar": "2017",
+        "Waterkracht": 98,
+        "Biomassa": 5028,
+        "Windenergie": 6917,
+        "Zonnestroom": 1109
+    },
+    {
+        "Jaar": "2018",
+        "Waterkracht": 98,
+        "Biomassa": 5028,
+        "Windenergie": 6917,
+        "Zonnestroom": 1109
+    },
+    {
+        "Jaar": "2019",
+        "Waterkracht": 98,
+        "Biomassa": 5028,
+        "Windenergie": 6917,
+        "Zonnestroom": 1109
+    }
+
+]

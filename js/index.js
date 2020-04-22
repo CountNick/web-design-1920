@@ -28,10 +28,35 @@ const data = [
     {
         name: "Totaal hernieuwbare energie",
         value: 18.5,
+        soorten: [
+          {
+              "Zonne energie": 6
+          },
+          {
+              Waterkracht: 5
+            },
+          {
+             Windenergie: 3.2
+          }
+      ]
     },
     {
         name: "Kernenergie",
         value: 3.2,
+        soorten: [
+          {
+              Aardgas: 58.7
+          },
+          {
+              Steenkool: 14.4
+            },
+            {
+              Stookolie: 0.1
+            },
+            {
+              'Overige fossiele brandstoffen': 3.2
+            }
+      ]
     },
     {
         name: "Overige energiedragers",
@@ -197,7 +222,7 @@ const context = new AudioContext();
 function handleBarFocus(data, index){
     
     console.log('klik: ', data)
-    const utterance = new SpeechSynthesisUtterance(`Er zijn ${data.value} ${data.name}`);
+    const utterance = new SpeechSynthesisUtterance(`Het percentage  ${data.name} is ${data.value}%`);
     speechSynthesis.speak(utterance);
 
     utterance.onend = () => listenToSpeech(data)
@@ -248,7 +273,7 @@ recognition.onresult = function(event) {
     console.log('You said: ', event.results[0][0].transcript);
 
     if(event.results[0][0].transcript == 'meer info'){
-        const utterance = new SpeechSynthesisUtterance(`Hiero`);
+        const utterance = new SpeechSynthesisUtterance(`Het percentage ${data.name} bestaat uit`);
         const utterance2 = new SpeechSynthesisUtterance(data.soorten.map(soort => `${Object.entries(soort)}%`))
         speechSynthesis.speak(utterance);
         utterance.onend = () => speechSynthesis.speak(utterance2)

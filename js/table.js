@@ -30,3 +30,4 @@ function cleanYear(data){
         if(object.jaar == "2019*") object.jaar = 2019
     })
 }
+    

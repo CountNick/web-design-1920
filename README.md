@@ -6,6 +6,9 @@ Web Design gaat over het ontwerpen en testen van Interactie. Het voordeel van ee
 In het vak Web design gaan we dingen ontwerpen voor echte mensen. Is er goede interactie? Kan je 'mens' je product op een prettige manier bedienen? Wat voor principes heb je gebruikt en getest? En zit er wel _nonsense_ in?
 
 
+Dataset: [hernieuwbare energie](https://opendata.cbs.nl/statline/#/CBS/nl/dataset/82610NED/table?dl=1A48A)
+
+
 ## Opdracht 1 - Ontwerpen met en voor echte mensen
 Voor dit vak krijg je een ontwerp-opdracht die je gaat maken voor 1 mens. Een echt mens. Je moet je ontwerp 3 keer testen. Door te testen en te itereren ga je je ontwerp verbeteren. Uiteindelijk heb je een ontwerp dat exclusief gemaakt is voor 1 persoon. Een _exclusive design_ ... Wie is deze persoon dan voor wie je dit gaat maken? Wat vindt deze persoon leuk of juist niet? En hoe bedient deze persoon een computer?
 
