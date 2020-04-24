@@ -37,7 +37,7 @@
 //     }
 
 // ]
-
+let context;
 const color = d3
   .scaleOrdinal()
   //.domain(["hasjpijpen", "tabakspijpen", "waterpijpen", "pijpen (rookgerei)", "opiumpijpen" ])
@@ -146,22 +146,22 @@ const path = svg
 
 
 
-// svg
-//   .selectAll(".dot")
-//   .data(data2.series)
-//   .enter()
-//   .append("g")
-//   .attr("fill", (d) => color(d.name))
-//   .selectAll("circle")
-//   .data(d => d.values)
-//   .enter()
-//   .append("circle")
-//   .attr("class", "dot")
-//   .attr("cx", (d, i) => xScale(data2.dates[i]))
-//   .attr("cy", (d, i) => yScale(d))
-//   .attr("stroke", "#fff")
-//   .attr("r", 10)
-//   .on('focus', d => console.log(d));
+svg
+  .selectAll(".dot")
+  .data(data2.series)
+  .enter()
+  .append("g")
+  .attr("fill", (d) => color(d.name))
+  .selectAll("circle")
+  .data(d => d.values)
+  .enter()
+  .append("circle")
+  .attr("class", "dot")
+  .attr("cx", (d, i) => xScale(data2.dates[i]))
+  .attr("cy", (d, i) => yScale(d))
+  .attr("stroke", "#fff")
+  .attr("r", 10)
+  .on('focus', d => console.log(d));
 
 
 
@@ -176,41 +176,30 @@ const musicNotes  = svg.selectAll('.musicnote')
     .attr("cx", (d, i) => xScale(data2.dates[0]))
     .attr("cy", (d, i) => yScale(d.values[0]))
     .attr("r", 25)
+    .on("click", function(d, i ){
+        d3.select(this)
+        .transition()
+        .delay(250)
+        .duration(2000)
+        .attrTween("pathTween", () => pathTween(path._groups[0][i]))
+
+    });
     
-    // .on('click', function(d, i) {pathTween(path._groups[0][i])})
-    .transition()
-    .delay(250)
-    .duration(2000)
-    // .ease("linear")
-    // .tween("pathTween", function(){
-    //     let iets = path._groups[0].find(d => this.className.baseVal === d.className.baseVal)
-    //     pathTween(iets)
-    // })
-    .tween("pathTween", (d, i) => pathTween(path._groups[0][i]))
-    // .on('click', () => console.log('mmoom'))
-
-    // console.log(path._groups[0])
-
-    // musicNotes._groups[0].forEach(d => console.log(d.className.baseVal))
-
-    // path._groups[0].forEach(d => console.log(d.className.baseVal))
-
-    // path.nodes()
-
-    
-
 
     function pathTween(path){
         
         console.log(path)
-        
+        // console.log(circle)
 
         var length = path.getTotalLength(); // Get the length of the path
         // console.log(length)
         var r = d3.interpolate(0, length); //Set up interpolation from 0 to the path length
-        return function(t){
+
+        return function(t) {
+            // console.log('t: ', t)
             var point = path.getPointAtLength(r(t)); // Get the next point along the path
-            console.log(point)
+            // console.log(point)
+            // createSound(point)
             d3.select(this) // Select the circle
             // .transition()
             // .delay(250)
@@ -218,5 +207,27 @@ const musicNotes  = svg.selectAll('.musicnote')
 
                 .attr("cx", point.x) // Set the cx
                 .attr("cy", point.y) // Set the cy
+                .attr("sound", createSound(point.y))
         }
     }
+
+    
+
+    function createSound(yVal) {
+        context = context || new AudioContext();
+        const volumeScale = d3.scaleLinear().domain([600, 1500]).range([2, 0.3]);
+        var toneScale = d3.scaleLinear().domain([0, d3.max(data2.series, (d) => d3.max(d.values))]).range([80, 1500]);
+        var oscillator = context.createOscillator();
+        var gainNode = context.createGain();
+        gainNode.gain.value = volumeScale(toneScale(yVal));
+        oscillator.type = 'triangle';
+        oscillator.frequency.value = toneScale(yVal); // Hz
+        // Connect the oscillator to our speakers after passing it
+        // through the gainNode to modulate volume
+        oscillator.connect(gainNode);
+        gainNode.connect(context.destination);
+        // Start the oscillator now
+        oscillator.start();
+        // this rapidly ramps sound down
+        gainNode.gain.setTargetAtTime(0, context.currentTime, .3);
+      }
