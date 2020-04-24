@@ -229,7 +229,7 @@ function handleBarFocus(data, index){
     // handleArrowKey()
     highlightedBarIndex = index
     const highlightedBar = d3.select(bars[index]);
-    const volumeScale = d3.scaleLinear().domain([100, 1500]).range([2, 0.3]);
+    const volumeScale = d3.scaleLinear().domain([600, 1500]).range([2, 0.3]);
     // console.log('hiero', highlightedBar)
 
     d3.selectAll(bars)
