@@ -37,7 +37,7 @@
 //     }
 
 // ]
-let context;
+
 const color = d3
   .scaleOrdinal()
   //.domain(["hasjpijpen", "tabakspijpen", "waterpijpen", "pijpen (rookgerei)", "opiumpijpen" ])
@@ -211,11 +211,10 @@ const musicNotes  = svg.selectAll('.musicnote')
         }
     }
 
-    
+    const context = new AudioContext();
 
     function createSound(yVal) {
-        context = context || new AudioContext();
-        const volumeScale = d3.scaleLinear().domain([600, 1500]).range([2, 0.3]);
+        const volumeScale = d3.scaleLinear().domain([100, 1500]).range([2, 0.3]);
         var toneScale = d3.scaleLinear().domain([0, d3.max(data2.series, (d) => d3.max(d.values))]).range([80, 1500]);
         var oscillator = context.createOscillator();
         var gainNode = context.createGain();
