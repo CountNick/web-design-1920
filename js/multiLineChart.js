@@ -1,42 +1,13 @@
-// const data = [
+const mainTitle = document.querySelector('h1')
+const instructions = document.querySelector('.instructions')
 
-//     {
-//         "Jaar": "2015",
-//         "Waterkracht": 99,
-//         "Biomassa": 5028,
-//         "Windenergie": 6917,
-//         "Zonnestroom": 1109
-//     },
-//     {
-//         "Jaar": "2016",
-//         "Waterkracht": 98,
-//         "Biomassa": 5010,
-//         "Windenergie": 8364,
-//         "Zonnestroom": 1602
-//     },
-//     {
-//         "Jaar": "2017",
-//         "Waterkracht": 94,
-//         "Biomassa": 4729,
-//         "Windenergie": 9642,
-//         "Zonnestroom": 2208
-//     },
-//     {
-//         "Jaar": "2018",
-//         "Waterkracht": 94,
-//         "Biomassa": 4694,
-//         "Windenergie": 10030,
-//         "Zonnestroom": 3693
-//     },
-//     {
-//         "Jaar": "2019",
-//         "Waterkracht": 93,
-//         "Biomassa": 5772,
-//         "Windenergie": 10743,
-//         "Zonnestroom": 5189
-//     }
+// console.log(instructions.textContent)
 
-// ]
+instructions.addEventListener('click', function() {speak(this.textContent)})
+mainTitle.addEventListener('click', function() {speak(this.textContent)})
+
+
+
 
 const color = d3
   .scaleOrdinal()
@@ -90,8 +61,27 @@ const svg = d3
 //   .attr("width", width + margin.left + margin.right + legendWidth)
 //   .attr("height", height + margin.top + margin.bottom)
   .attr("preserveAspectRatio", "xMinYMin meet")
-  .attr("viewBox", "-60 -30 800 500")
+  .attr("viewBox", "-70 -30 800 500")
   .attr("aria-labelledby", "bar-chart-title");
+
+  svg
+    .append("text")
+    // .attr("x", margin.left)
+    .attr("y", 320)
+    .text("Jaren")
+    .style("font-family", "'Roboto', sans-serif")
+    .style("font-weight", "300")
+    .attr("id", "label")
+
+  svg
+    .append("text")
+    .attr("x", -margin.left -60)
+    .attr("y", -50)
+    .text("TeraJoule")
+    .style("font-family", "'Roboto', sans-serif")
+    .style("font-weight", "300")
+    .attr("transform", "rotate(270)")
+    .attr("id", "label")
 
 const xValue = (d) => d.Jaar;
 const yValue = (d) => d.Zonnestroom;
@@ -126,7 +116,7 @@ svg
 
 // 4. Call the y axis in a group tag
 svg.append("g").attr("class", "y axis")
-    .call(d3.axisLeft(yScale)); // Create an axis component with d3.axisLeft
+    .call(d3.axisLeft(yScale)); // Create an axis component with d3.axisLeft  
 
 const path = svg
   .append("g")
@@ -144,7 +134,7 @@ const path = svg
   .on('focus', d => console.log(d));
 
 
-
+svg.on('keydown', () => handleArrowKey())
 
 svg
   .selectAll(".dot")
@@ -161,8 +151,21 @@ svg
   .attr("cy", (d, i) => yScale(d))
   .attr("stroke", "#fff")
   .attr("r", 10)
-  .on('focus', d => console.log(d));
+  .on('focus', (value, i) =>  {
+    
+    const energyKind = data2.series.find(d => d.values.includes(value))
+    const info = `in ${data2.dates[i].getFullYear()} was het bruto eindverbruik van ${energyKind.name} ${value} terajoule`
+    speak(info)
 
+  });
+
+  const dots = d3.selectAll('.dot').nodes()
+  
+
+  let highlightedDotIndex = null
+
+  // data2.dates[0], 
+  // console.log(d, data2.series[i]),
 
 
 
@@ -176,15 +179,48 @@ const musicNotes  = svg.selectAll('.musicnote')
     .attr("cx", (d, i) => xScale(data2.dates[0]))
     .attr("cy", (d, i) => yScale(d.values[0]))
     .attr("r", 25)
-    .on("click", function(d, i ){
-        d3.select(this)
+    .style('opacity', 0)
+    .on("click", function(d, i ){  
+      d3.select(this)
         .transition()
         .delay(250)
         .duration(2000)
         .attrTween("pathTween", () => pathTween(path._groups[0][i]))
-
     });
     
+    const lineItemHeight = 30
+
+    svg.selectAll("circles")
+    .data(data2.series)
+    .enter()
+    .append("circle")
+      .attr("fill", (d, i) => color(d.name))
+      .attr("stroke", "#000")
+      .attr("r", 12)
+      // .attr("height", 20)
+      .attr("cx", innerWidth + margin.right + 10)
+      .attr("cy", (d, i) => lineItemHeight * (i + 1) + 30)
+    
+    
+    svg
+    .selectAll("circles")
+    .data(data2.series)
+    .enter()
+    .append("text")
+    .text(
+      (d) => `${d.name}`
+    )
+    .attr("x", innerWidth + margin.right + 30)
+    .attr("y", (d, i) => lineItemHeight * (i + 1) + 35)
+    .style("font-family", "'Roboto', sans-serif")
+    .style("font-weight", "300")
+
+    svg
+    .append("text")
+    .text("Legenda")
+    .style("font-family", "'Roboto', sans-serif")
+    .attr("x", innerWidth + margin.right)
+    .attr("y", 20)
 
     function pathTween(path){
         
@@ -230,3 +266,49 @@ const musicNotes  = svg.selectAll('.musicnote')
         // this rapidly ramps sound down
         gainNode.gain.setTargetAtTime(0, context.currentTime, .3);
       }
+
+    function speak(data){
+      // console.log('klik: ', data)
+      const utterance = new SpeechSynthesisUtterance(data);
+      speechSynthesis.speak(utterance);
+    }
+
+    function handleArrowKey(){
+      const pushed = d3.event.keyCode
+      console.log(pushed)
+      if(pushed !== 37 && pushed !== 39) return
+      // else console.log(pushed)
+  
+      if(highlightedDotIndex === null){
+          console.log(pushed)
+          highlightedBarIndex = 0
+      }
+      else if (pushed === 37) {
+        highlightedDotIndex -= 1;
+      } else if (pushed === 39) {
+        highlightedDotIndex += 1;
+      }
+      
+      const numBars = dots.length
+  
+      highlightedDotIndex = highlightedDotIndex < 0 ? numBars + highlightedDotIndex : highlightedDotIndex % numBars;
+      dots[highlightedDotIndex].focus();
+  }
+
+
+  function handleDotFocus(index){
+    
+    // handleArrowKey()
+    highlightedDotIndex = index
+    const highlightedDot = d3.select(dots[index]);
+    // console.log('hiero', highlightedBar)
+
+    d3.selectAll(dots)
+    .classed('highlighted', false)
+    .attr('tabindex', '-1');
+
+    highlightedDot
+    .classed('highlighted', true)
+    .attr('tabindex', '0');
+
+}
