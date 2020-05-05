@@ -181,11 +181,16 @@ const musicNotes  = svg.selectAll('.musicnote')
     .attr("r", 25)
     .style('opacity', 0)
     .on("click", function(d, i ){  
-      d3.select(this)
+      speak(`Zo klinkt de ${this.className.baseVal}`)
+      setTimeout( () => {
+        d3.select(this)
         .transition()
         .delay(250)
-        .duration(2000)
+        .duration(1000)
         .attrTween("pathTween", () => pathTween(path._groups[0][i]))
+
+      }, 2000)
+
     });
     
     const lineItemHeight = 30

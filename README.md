@@ -5,9 +5,22 @@
 
 ## Inhoudsopgave
 
-* ### [Test resultaten]()
-* ### [Exclusive principles]()
-* ### [Reflectie]()
+* ### [Concept]()
+* ### [Test resultaten](https://github.com/CountNick/web-design-1920#test-resultaten-1)
+* ### [Exclusive principles](https://github.com/CountNick/web-design-1920#exclusive-design-principles)
+* ### [Reflectie](https://github.com/CountNick/web-design-1920#reflectie-1)
+
+## Concept
+
+Het concept is een datavisualisatie die laat zien wat het bruto eindverbuik van hernieuwbare energie is naar soort.
+
+Omdat Roger moeite heeft met het lezen van lange teksten kan er op de teksten geklikt worden waardoor deze worden voorgelezen.
+
+Roger kan door de grafiek heen navigeren dmv de pijltjestoetsen. Op elk punt waar de focus op ligt word aan hem voorgelezen wat dit is, van welk jaar dit is, en de waarde van dat punt.
+
+De grafiek kan ook muziek maken. Door op het eerste punt in elke lijn te klikken word er een toon afgespeeld die de daling of stijging van een energiesoort laat zien.
+
+[data bron: CBS](https://opendata.cbs.nl/statline/#/CBS/nl/dataset/83109NED/table?dl=1FBA8)
 
 
 ## Test resultaten
@@ -36,4 +49,22 @@ Bij die principe gaat het erom dat je iemands persoonlijkheid naar voren laat ko
 Roger gaf ook aan dat hij heel erg van muziek houd. Ik kreeg toen het idee om van de visualisatie een soort instrument te maken. Mijn idee was om een toon te laten afspelen op het moment dat Roger hier een voice command voor geeft. De toon zou bijvoorbeeld de daling of stijging hoorbaar moeten maken voor Roger. Alleen zegt de hoogte van de toonhoogte opzich natuurlijk niet zoveel. Toen ik aan Roger vroeg of hij dit leuk zou vinden gaf hij aand van wel. Daarom heb ik besloten deze feature toch toe te voegen.
 
 ## Reflectie
+
+Ik vond Web Design een heel leuk en leerzaam vak. Ik heb veel dingen geprobeerd waarvan ik niet had gedacht dat deze zouden lukken of zo makkelijk mogelijk waren. 
+
+Het rapid prototypen is best goed gegaan, wat ik niet perse had verwacht. Ik vond het wel erg lastig om snel van te voren te bedenken wat en hoe ik nou precies wilde testen.
+
+Ik heb wel weer opnieuw gemerkt dat testen echt heel erg lastig is, en al helemaal via een videochat. Soms ging het helemaal fout dit kon bijvoorbeeld zijn dat Roger per ongeluk op de verkeerde toetscombinatie drukte, en hij dan opeens de chat uit was. 
+
+Of in mijn geval dat wat ik geïttereerd had gewoon niet duidelijk genoeg was. Ik ben erachter gekomen dat ik functies of features vaak te diep verstop in mijn designs waardoor een testpersoon vaak nieteens weet dat er nog iets anders mogelijk is.
+
+Dit kwam bijvoorbeeld naar voren tijdens mijn derde test. Hier had ik de voice en speech api gebruikt zodat Roger dieper op de data in kon gaan door het gebruiken van zijn stem. Alleen was er nergens aangegeven dat hij iets met zijn stem moest doen. Hij wist dus niet dat dit kon. Mijn test was heirdoor dus eigenlijk al mislukt omdat ik hierna heb uitgelegd wat hij moest doen.
+
+Dit was natuurlijk niet de bedoeling van deze test. Het was de bedoeling dat Roger zelf ging uitvogelen hoe het ding werkt. 
+
+Dit is niet alleen in de derde test gebeurd. Tijdens de tweede test vroeg ik Roger of wat hij dacht dat er met de visualisatie gedaan kon worden. Hij draaide de vraag toen om en uiteindelijk heb ik ook in deze test verteld wat de bedoeling was. 
+
+Ik heb opgemerkt dat het erg moeilijk is om op je tong te bijten tijdens een test. Toch is dit wel het beste wat je kan doen. Doordat ik heb uitgelegd wat Roger moest doen heb ik denk ik toch veel knelpunten gemist.
+
+De volgende keer dat ik een prototype test zal ik waarschijnlijk meer tijd nemen om te bedenken wat ik daadwerkelijk wil testen. En hoe ik testpersoon het echt zelf laat doen.
 
