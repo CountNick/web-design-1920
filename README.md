@@ -1,188 +1,39 @@
-# Web Design @cmda-minor-web 1920
-//Interactie ontwerpen: Rapid prototypen en testen met echte mensen
+# Exclusive design voor Roger Ravelli
 
-Web Design gaat over het ontwerpen en testen van Interactie. Het voordeel van een Frontend Developer (en Web Designer) is dat die techniek begrijpt, kan toepassen én verstand heeft van UX en design. Als je Web technieken begrijpt kun je je ideeën snel prototypen en testen met echte gebruikers, in een browser. Je kan dan aanpassingen doorvoeren, uitproberen en weer testen ...
+![Datavis](https://user-images.githubusercontent.com/47485018/81056324-a6ba8100-8eca-11ea-8c51-fdfe7f1050bf.png)
 
-In het vak Web design gaan we dingen ontwerpen voor echte mensen. Is er goede interactie? Kan je 'mens' je product op een prettige manier bedienen? Wat voor principes heb je gebruikt en getest? En zit er wel _nonsense_ in?
 
+## Inhoudsopgave
 
-Dataset: [hernieuwbare energie](https://opendata.cbs.nl/statline/#/CBS/nl/dataset/82610NED/table?dl=1A48A)
+* ### [Test resultaten]()
+* ### [Exclusive principles]()
+* ### [Reflectie]()
 
 
-## Opdracht 1 - Ontwerpen met en voor echte mensen
-Voor dit vak krijg je een ontwerp-opdracht die je gaat maken voor 1 mens. Een echt mens. Je moet je ontwerp 3 keer testen. Door te testen en te itereren ga je je ontwerp verbeteren. Uiteindelijk heb je een ontwerp dat exclusief gemaakt is voor 1 persoon. Een _exclusive design_ ... Wie is deze persoon dan voor wie je dit gaat maken? Wat vindt deze persoon leuk of juist niet? En hoe bedient deze persoon een computer?
+## Test resultaten
 
-- [Opdracht 1 - Ontwerpen met en voor echte mensen](Opdracht1.md)
+* [Test 1](https://github.com/CountNick/web-design-1920/wiki/1.1-Eerste-gesprek-met-Roger)
+* [Test 2](https://github.com/CountNick/web-design-1920/wiki/2.1-Tweede-test-met-Roger)
+* [Test 3](https://github.com/CountNick/web-design-1920/wiki/3.1-Derde-test-met-Roger)
 
+## Exclusive design principles
 
-## Leerdoelen
-- _Leren hoe je (design) principles in een ontwerp kan toepassen._
-- _User needs begrijpen en gebruiken in je ontwerp._
-- _Leren hoe je moet testen en de resultaten gebruiken voor het verbeteren van je ontwerp._
+In de [Wiki](https://github.com/CountNick/web-design-1920/wiki/1.2-Exclusive-Design) staat ook nog een wat algemener verhaal over de principles
 
-[Rubric](https://docs.google.com/spreadsheets/d/1no32c9YyAP78VMcqfA5i5at2OrxP9ce1d8dVGnii4Vs/)
+### #1 Study situation
 
+Roger kan nog wel zien maar zijn zicht is wel constant aan het verslechteren. Voor zover hij zijn zicht nog kan gebruiken wil hij dit ook. Hiervoor is het voor hem belangrijk dat wat er op het beeld staat een hoog contrast heeft, en groter dan normaal is. Kleine knopjes etc. is hij niet gewend te gebruiken, ook bijvoorbeeld de tabtoetsen niet. Dit zijn dingetjes die eerst duidelijk gemaakt moeten worden. Teksten kan Roger nog wel lezen maar dit kost hem bijzonder veel inspanning. Hij gebruikt hiervoor een screenreader.
 
+### #2 Ignore conventions
 
-## Planning
+Tijdens het eerste gesprek met Roger kwamen wij erachter dat hij het werken met een screenreader helemaal niet perse als prettig ervaart. Een aantal keer was Roger opzoek naar informatie en moest hij telkens weer door het complete ding heen klikken. Wij merkten tijdens het testen dat hij hier erg nerveus van werd. Hierdoor dacht ik dus dat het beter zou zijn om de screenreader maar helemaal links te laten liggen, en hier zelf een oplossing voor te verzinnen. Roger kan nu mbv de pijltjes en tab toetsen door de datavisualisatie heen, op het moment dat hij op een punt is gekomen word de informatie door de browser voorgelezen. Zo kan hij op zijn eigen tempo door de visualisatie heen.
 
-| Planning  | Woensdag  |  Donderdag | Vrijdag  |
-|---|---|---|---|
-| <a href=#web-design---week-1>Week 1</a>  | Introductie, College Exclusive design + Briefing opdracht 1 <p>Aannames testen met echte mensen| Gastcollege _Usability and Accessibility_ van Marie van Driessche - VPRO <p>Coachingsgesprekken | Goede vrijdag  |
-| <a href=#web-design---week-2>Week 2</a>  | College Principles, User Needs & Testen <p>Prototype Testen met echte mensen |  Gastcollege Toegankelijkheid Johan Huijkman - Q42 en Roger Ravelli <p>Coachingsgesprekken | Feedbackgesprekken  |
-| <a href=#web-design---week-3>Week 3</a>  | College Web Design <p>Prototype testen met echte mensen | Gastcollege Experimental features van Léonie Watson - W3C <p>Coachingsgesprekken  | Feedbackgesprekken  |
-| Meivakantie |  |  |   |
-| <a href=#web-design---week-4>Week 4</a>  | Beoordelingsgesprekken | Beoordelingsgesprekken  | Beoordelingsgesprekken  |
+### #3 Prioritise identity
 
+Bij die principe gaat het erom dat je iemands persoonlijkheid naar voren laat komen in het ontwerp. In de gesprekken met Roger kwamen wij erachter dat hij stage loopt bij Q42 en dat hij zelf ook zeer geïnteresseerd is in accessibility. Natuurlijk ook vanwege zijn eigen frustraties met "acccessible software". Maar hij heeft ook zelf een technische baan gehad, en gaf aan dat hij ook graag inzicht zou krijgen in bijvoorbeeld data over hernieuwbare energie. De data visualisatie gaat over het gebruik van hernieuwbare energie, en is speciaal voor Roger accessible gemaakt.
 
+### #4 Add nonsense/ Prioritise Identity
+Roger gaf ook aan dat hij heel erg van muziek houd. Ik kreeg toen het idee om van de visualisatie een soort instrument te maken. Mijn idee was om een toon te laten afspelen op het moment dat Roger hier een voice command voor geeft. De toon zou bijvoorbeeld de daling of stijging hoorbaar moeten maken voor Roger. Alleen zegt de hoogte van de toonhoogte opzich natuurlijk niet zoveel. Toen ik aan Roger vroeg of hij dit leuk zou vinden gaf hij aand van wel. Daarom heb ik besloten deze feature toch toe te voegen.
 
+## Reflectie
 
-## Programma
-
-### Web Design - Week 1
-Deze week krijg je een college over _Exclusive Design Principles_. Deze Principles ga je toepassen in de opdracht. Op woensdag gaan we kennis maken met de echte mensen voor wie we gaan ontwerpen. Je kan dan al een kleine interactieve demo maken om te testen.
-
-
-#### Woensdag 8 april
-Woensdag is de eerste les van het vak Web Design. Je krijgt een intro college over het vak en Vasilis gaat vertellen over _Exclusive Design_. [Planning week 1](./slides/Week1.png)
-
-- [Les 1 Introduktie en briefing opdracht 1](./slides/WD1920%20Les1%20-%20kickoff.pdf)
-- [College over Exclusive Design]()
-
-'s Middags gaan we kennismaken met mensen met wie jullie gaan samenwerken. Wie zijn deze mensen? Wat vinden ze leuk of juist niet? En hoe bedienen ze een computer?
-
-1. Marie van Driessche om 14:00
-2. Larissa Klaassen om 14:00.
-3. Roger Ravelli om 14:00.
-4. Marijn Meijles om 16:00.
-
-
-
-#### Donderdag 9 april
-Donderdag begint de les met een Q&A. Hoe gingen de gesprekken jullie mensen? Hoe kun je testen nu we remote werken? Bedenk alvast vragen en opmerkingen om te bespreken.
-Marie van Driessche van de VPRO geeft een gastcollege over Design.
-
-Deze les gaan we onderstaande artikelen bespreken:
-- [Exclusive Design van Vasilis van Gemert](https://exclusive-design.vasilis.nl/)
-
-
-In de middag zijn er coachingsgesprekken in groepjes.
-
-#### Vrijdag 10 april
-Vrijdag is het Goede vrijdag. Geen les.
-
-
-
-
-### Web Design - Week 2
-Deze week heb je het tweede gesprek met je mens. Wat ga je testen? Wat wil je weten? [Planning week 2](./slides/Week2.png)
-
-- [College over Principles, User needs & Testen]()
-
-
-
-#### Woensdag 15 april
-Woensdag krijg je een college over principles, user needs & testen.
-
-- [Les 2 principles, user needs & testen]()
-
-Deze les gaan we dit artikel bespreken:
-- [Design for Both Needs and Wants: Applying Anderson’s User Experience Hierarchy of Needs](https://thevisualcommunicationguy.com/2018/11/08/design-for-both-needs-and-wants-applying-andersons-user-experience-hierarchy-of-needs/)
--  [10 Usability Lessons van Steve Krug](https://www.uxbooth.com/articles/10-usability-lessons-from-steve-krugs-dont-make-me-think/)
-
-'s Middags gaan we testen.
-
-1. Marie van Driessche om 14:00
-2. Larissa Klaassen om 14:00.
-3. Roger Ravelli om 14:00.
-4. Marijn Meijles om 16:00.
-
-
-#### Donderdag 16 april
-Donderdag begint de les met een Q&A. Tips en triks voor remote testen?
-Johan Huijkman van Q42 geeft samen met Roger Ravelli een gastcollege over toegankelijkheid.
-
-In de middag zijn er coachingsgesprekken in groepjes.
-
-
-Deze les gaan we dit artikel bespreken:
-- [How User Scenarios Help To Improve Your UX van Sabina Idler](https://usabilla.com/blog/how-user-scenarios-help-to-improve-your-ux/)
-
-
-#### Vrijdag 17 april
-Vrijdag zijn er feedbackgesprekken met Vasilis en Koop.
-
-
-
-
-
-
-### Web Design - Week 3
-In week 3 gaan we verder met testen, itereren en reflecteren. Woensdag is de laatste sessie met je mens. [Planning week 3](./slides/Week3.png)
-
-
-#### Woensdag 22 april
-Woensdag beginnen we met een college. Dan gaan we twee artikelen bespreken.
-
-- [Les 3 college Web Design]()
-
-
-Deze les gaan we dit artikel bespreken:
-- [Design for Fingers, Touch, and People van Steven Hoober](https://www.uxmatters.com/mt/archives/2017/03/design-for-fingers-touch-and-people-part-1.php)
-
-
-
-'s Middags gaan we voor de laatste keer testen.
-
-1. Marie van Driessche om 14:00
-2. Larissa Klaassen om 14:00.
-3. Roger Ravelli om 14:00.
-4. Marijn Meijles om 16:00.
-
-
-#### Donderdag 23 april
-Donderdag begint de les met een Q&A.
-Léonie Watson van W3C geeft een gastcollege over experimental features.
-
-In de middag zijn er weer coachingsgesprekken in groepjes.
-
-
-
-
-Deze les gaan we dit artikel bespreken:
-- [Designing for Interaction Modes van Andrew Grimes](https://alistapart.com/article/designing-for-interaction-modes/)
-
-
-#### Vrijdag 24 april
-Vrijdag zijn er feedbackgesprekken met Vasilis en Koop.
-
-
-
-
-### Web Design - Week 4
-
-Deze week hebben we een gesprek waarin we je vorderingen en bevindingen bespreken. We verwachten dat je op Github je tests en iteraties hebt beschreven. Belangrijk is dat je reflecteert op de leerdoelen van het vak. [Planning week 4](./slides/Week4.png)
-
-Lees hier de [criteria van opdracht 1](Opdracht1.md)
-
-
-
-
-
-<!-- Add a link to your live demo in Github Pages 🌐-->
-
-<!-- ☝️ replace this description with a description of your own work -->
-
-<!-- replace the code in the /docs folder with your own, so you can showcase your work with GitHub Pages 🌍 -->
-
-<!-- Add a nice poster image here at the end of the week, showing off your shiny frontend 📸 -->
-
-<!-- Maybe a table of contents here? 📚 -->
-
-<!-- How about a section that describes how to install this project? 🤓 -->
-
-<!-- ...but how does one use this project? What are its features 🤔 -->
-
-<!-- Maybe a checklist of done stuff and stuff still on your wishlist? ✅ -->
-
-<!-- How about a license here? 📜 (or is it a licence?) 🤷 -->
